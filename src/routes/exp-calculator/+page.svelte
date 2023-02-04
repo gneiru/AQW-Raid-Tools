@@ -45,7 +45,7 @@
         copyMessage = 'Copied';
         setTimeout(() => {
           copyMessage = 'Copy';
-        }, 4000);
+        }, 2000);
       }
 
 </script>
