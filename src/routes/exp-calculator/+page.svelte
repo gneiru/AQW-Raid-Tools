@@ -2,6 +2,7 @@
     import { copy } from 'svelte-copy';
 
 	let title = 'Raid Exp Calculator';
+    let copyMessage = "Copy"
     let prefix = 'me!';
     let give = 'give-xp <@';
 	let ultraSum = [];
@@ -40,6 +41,13 @@
     }
     $: copyValue = prefix + give+ discordID + "> " +sum
 
+    const doCopy = () => {
+        copyMessage = 'Copied';
+        setTimeout(() => {
+          copyMessage = 'Copy';
+        }, 4000);
+      }
+
 </script>
 
 <svelte:head>
@@ -64,7 +72,7 @@
         <div>
             
             <div class="mockup-code">
-                <pre><code> {copyValue}<button use:copy = {copyValue} class="btn btn-info float-right">Copy</button></code></pre>
+                <pre><code id="Copied?"> {copyValue}<button use:copy = {copyValue} on:svelte-copy = {doCopy} class="btn btn-ghost btn-active btn-xs float-right">{copyMessage}</button></code></pre>
             </div>
         </div>
         <div class="grid grid-cols-4 gap-2 bg-#372948 rounded-lg">
