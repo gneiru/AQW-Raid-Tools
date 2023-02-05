@@ -1,6 +1,4 @@
 <script>
-	import { copy } from 'svelte-copy';
-
 	let title = 'Raid Maps';
 	let copyMessage = 'Copy';
 	let copyValue = '';
@@ -19,6 +17,7 @@
 			e.target.textContent = 'Copy';
 		}, 2000);
 	}
+
 	let maps = [
 		{ daily: 'ultraezrajal', weekly: 'ultradage', nul: 'originul', va: 'shadowfall' },
 		{ daily: 'ultrawarden', weekly: 'ultradarkon', nul: 'voidflibbi', va: 'voidflibbi' },
@@ -31,6 +30,8 @@
 		{ daily: 'ultratyndarius', weekly: 'ultranulgath', nul: 'voidxyfrag', va: 'hydrachallenge' },
 		{ daily: '', weekly: 'ultradrago', nul: '', va: '' }
 	];
+
+	$: room = roomNumber === null ? Math.floor(Math.random() * 100000) : roomNumber;
 </script>
 
 <svelte:head>
@@ -42,7 +43,7 @@
 		<div class="text-3xl my-4">{title}</div>
 		<div class="form-control">
 			<span class="label-text py-2">Room Number</span>
-			<input type="text" bind:value={roomNumber} class="input input-bordered max-w-sm" />
+			<input type="number" bind:value={roomNumber} class="input input-bordered max-w-sm" />
 		</div>
 		<div class="my-4 flex flex-row">
 			<label>
@@ -78,7 +79,7 @@
 											copyValue = e.target.parentNode.lastChild.wholeText;
 											copyAction(e);
 										}}>{copyMessage}</button
-									>/join {map.daily}-{roomNumber}</td
+									>/join {map.daily}-{room}</td
 								>
 							{:else}
 								<td />
@@ -91,7 +92,7 @@
 											copyValue = e.target.parentNode.lastChild.wholeText;
 											copyAction(e);
 										}}>{copyMessage}</button
-									>/join {map.weekly}-{roomNumber}</td
+									>/join {map.weekly}-{room}</td
 								>
 							{:else}
 								<td />
@@ -104,7 +105,7 @@
 											copyValue = e.target.parentNode.lastChild.wholeText;
 											copyAction(e);
 										}}>{copyMessage}</button
-									>/join {map.nul}-{roomNumber}</td
+									>/join {map.nul}-{room}</td
 								>
 							{:else}
 								<td />
@@ -117,7 +118,7 @@
 											copyValue = e.target.parentNode.lastChild.wholeText;
 											copyAction(e);
 										}}>{copyMessage}</button
-									>/join {map.va}-{roomNumber}</td
+									>/join {map.va}-{room}</td
 								>
 							{:else}
 								<td />

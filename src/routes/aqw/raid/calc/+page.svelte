@@ -84,11 +84,10 @@
 			{#each ultras as ultra}
 				<button
 					on:click={() => push(ultra)}
-					class="rounded {['Weeklies', 'Dailies', 'All Ultras', 'Trio'].includes(ultra.name)
-						? 'btn btn-primary'
-						: 'btn'}
-						"
-				>
+					class={['Weeklies', 'Dailies', 'All Ultras', 'Trio'].includes(ultra.name)
+						? 'btn btn-accent'
+						: 'btn btn-secondary'}
+						>
 					{ultra.name}
 				</button>
 			{/each}
@@ -97,7 +96,7 @@
 					sum *= 0;
 					ultraSum = [];
 				}}
-				class="btn btn-warning"
+				class="btn btn-warning text-white"
 			>
 				Clear
 			</button>
