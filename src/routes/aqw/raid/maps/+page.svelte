@@ -1,0 +1,139 @@
+<script>
+	import { copy } from 'svelte-copy';
+
+	let title = 'Raid Maps';
+	let copyMessage = 'Copy';
+	let copyValue = '';
+	let daily = true;
+	let nul = true;
+	let weekly = false;
+	let va = true;
+	let roomNumber = 1001;
+
+	function copyAction(e) {
+		let newVal = 'Copied';
+		e.target.textContent = newVal;
+		console.log(copyValue);
+		navigator.clipboard.writeText(copyValue);
+		setTimeout(() => {
+			e.target.textContent = 'Copy';
+		}, 2000);
+	}
+	let maps = [
+		{ daily: 'ultraezrajal', weekly: 'ultradage', nul: 'originul', va: 'shadowfall' },
+		{ daily: 'ultrawarden', weekly: 'ultradarkon', nul: 'voidflibbi', va: 'voidflibbi' },
+		{
+			daily: 'ultraengineer',
+			weekly: 'championdrakath',
+			nul: 'voidnightbane',
+			va: 'icestormarena'
+		},
+		{ daily: 'ultratyndarius', weekly: 'ultranulgath', nul: 'voidxyfrag', va: 'hydrachallenge' },
+		{ daily: '', weekly: 'ultradrago', nul: '', va: '' }
+	];
+</script>
+
+<svelte:head>
+	<title>{title}</title>
+	<meta name="description" content={title} />
+</svelte:head>
+<div>
+	<div class="justify-center px-4 border-t border-base-300">
+		<div class="text-3xl my-4">{title}</div>
+		<div class="form-control">
+			<span class="label-text py-2">Room Number</span>
+			<input type="text" bind:value={roomNumber} class="input input-bordered max-w-sm" />
+		</div>
+		<div class="my-4 flex flex-row">
+			<label>
+				<input type="checkbox" bind:checked={daily} class="checkbox checkbox-primary mx-4" />
+				Daily
+				<input type="checkbox" bind:checked={weekly} class="checkbox checkbox-primary mx-4" />
+				Weekly
+				<input type="checkbox" bind:checked={nul} class="checkbox checkbox-primary mx-4" />
+				Nully
+				<input type="checkbox" bind:checked={va} class="checkbox checkbox-primary mx-4" />
+				VoidAura
+			</label>
+		</div>
+		<div class="overflow-x-auto">
+			<table class="table w-full table-auto">
+				<!-- head -->
+				<thead>
+					<tr>
+						<th>Daily</th>
+						<th>Weekly</th>
+						<th>Nully</th>
+						<th>VoidAura</th>
+					</tr>
+				</thead>
+				<tbody>
+					{#each maps as map}
+						<tr>
+							{#if map.daily && daily}
+								<td data-column-name="daily"
+									><button
+										class="btn btn-xs float-left"
+										on:click={(e) => {
+											copyValue = e.target.parentNode.lastChild.wholeText;
+											copyAction(e);
+										}}>{copyMessage}</button
+									>/join {map.daily}-{roomNumber}</td
+								>
+							{:else}
+								<td />
+							{/if}
+							{#if map.weekly && weekly}
+								<td data-column-name="weekly"
+									><button
+										class="btn btn-xs float-left"
+										on:click={(e) => {
+											copyValue = e.target.parentNode.lastChild.wholeText;
+											copyAction(e);
+										}}>{copyMessage}</button
+									>/join {map.weekly}-{roomNumber}</td
+								>
+							{:else}
+								<td />
+							{/if}
+							{#if map.nul && nul}
+								<td data-column-name="nul"
+									><button
+										class="btn btn-xs float-left"
+										on:click={(e) => {
+											copyValue = e.target.parentNode.lastChild.wholeText;
+											copyAction(e);
+										}}>{copyMessage}</button
+									>/join {map.nul}-{roomNumber}</td
+								>
+							{:else}
+								<td />
+							{/if}
+							{#if map.va && va}
+								<td data-column-name="nul"
+									><button
+										class="btn btn-xs float-left"
+										on:click={(e) => {
+											copyValue = e.target.parentNode.lastChild.wholeText;
+											copyAction(e);
+										}}>{copyMessage}</button
+									>/join {map.va}-{roomNumber}</td
+								>
+							{:else}
+								<td />
+							{/if}
+						</tr>
+					{/each}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+<style>
+	td {
+		white-space: nowrap;
+		overflow-x: hidden;
+		text-overflow: ellipsis;
+	}
+</style>
