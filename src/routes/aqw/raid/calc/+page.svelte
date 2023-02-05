@@ -71,7 +71,7 @@
 			<input type="text" bind:value={discordID} class="input input-bordered " name="discordID" />
 		</div>
 		<div
-			class="p-4 my-4 max-w-xs border-2 rounded-lg border-secondary inline-flex items-baseline text-ellipsis overflow-hidden"
+			class="p-4 my-4 max-w-l border-2 rounded-lg border-secondary inline-flex items-baseline text-ellipsis overflow-hidden"
 		>
 			<pre><code id="Copied?"> {copyValue}<button
 						use:copy={copyValue}
