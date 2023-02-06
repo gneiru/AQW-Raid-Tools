@@ -1,3 +1,10 @@
+<script>
+	let title = "AQW"
+</script>
+<svelte:head>
+	<title>{title}</title>
+	<meta name="description" content={title} />
+</svelte:head>
 <div class="hero min-h-screen bg-base-200">
 	<div class="hero-content text-center">
 		<div class="max-w-sm">
