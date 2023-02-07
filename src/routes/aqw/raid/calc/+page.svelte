@@ -53,25 +53,50 @@
 	<title>{title}</title>
 	<meta name="description" content={title} />
 </svelte:head>
-<div class="mockup-window border border-base-300">
-	<div class="justify-center px-4 border-t border-base-300">
+<div class="mockup-window border border-bg-base-300 min-w-fit">
+	<div class="justify-center px-4 border-t border-bg-base-300">
 		<div class="text-3xl my-4">{title}</div>
-		<div class="form-control">
-			<span class="label-text py-2">Bot prefix</span>
-			<input
-				type="text"
-				bind:value={prefix}
-				placeholder="me!"
-				class="input input-bordered "
-				name="prefix"
-			/>
-		</div>
-		<div class="form-control">
-			<span class="label-text py-2">Discord ID</span>
-			<input type="text" bind:value={discordID} class="input input-bordered " name="discordID" />
+		<div class="w-full flex flex-row">
+			<div class="w-1/2 flex flex-col">
+				<div class="form-control">
+					<span class="label-text py-2">Bot prefix</span>
+					<input
+						type="text"
+						bind:value={prefix}
+						placeholder="me!"
+						class="input input-bordered "
+						name="prefix"
+					/>
+				</div>
+				<div class="form-control">
+					<span class="label-text py-2">Discord ID</span>
+					<input type="text" bind:value={discordID} class="input input-bordered" name="discordID" />
+				</div>
+			</div>
+			<div class="w-1/2 flex flex-col p-4">
+				<div class="max-h-32 overflow-auto">
+					{#each ultraSum as u, i}
+						<button on:click={() => popSelfInArray(u)} class="btn btn-sm rounded-full">
+							{u.name}
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								class="inline-block w-4 h-4 stroke-current"
+								><path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M6 18L18 6M6 6l12 12"
+								/></svg
+							>
+						</button>
+					{/each}
+				</div>
+			</div>
 		</div>
 		<div
-			class="p-4 my-4 max-w-l border-2 rounded-lg border-secondary inline-flex items-baseline text-ellipsis overflow-hidden"
+			class="p-4 my-4 max-w-l border-2 rounded-lg border-bg-secondary inline-flex items-baseline text-ellipsis overflow-hidden"
 		>
 			<pre><code id="Copied?"> {copyValue}<button
 						use:copy={copyValue}
@@ -80,14 +105,14 @@
 					></code
 				></pre>
 		</div>
-		<div class="grid grid-cols-4 gap-2 bg-#372948 rounded">
+		<div class="grid grid-cols-4 gap-2 bg-#372948 rounded my-4">
 			{#each ultras as ultra}
 				<button
 					on:click={() => push(ultra)}
 					class={['Weeklies', 'Dailies', 'All Ultras', 'Trio'].includes(ultra.name)
 						? 'btn btn-accent'
 						: 'btn btn-secondary'}
-						>
+				>
 					{ultra.name}
 				</button>
 			{/each}
@@ -100,27 +125,6 @@
 			>
 				Clear
 			</button>
-		</div>
-		<div class="grid mt-4 border-t-2 border-accent">
-			<div class="m-5">
-				{#each ultraSum as u, i}
-					<button on:click={() => popSelfInArray(u)} class="badge badge-default rounded-full">
-						{u.name}
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							fill="none"
-							viewBox="0 0 24 24"
-							class="inline-block w-4 h-4 stroke-current"
-							><path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="M6 18L18 6M6 6l12 12"
-							/></svg
-						>
-					</button>
-				{/each}
-			</div>
 		</div>
 	</div>
 </div>

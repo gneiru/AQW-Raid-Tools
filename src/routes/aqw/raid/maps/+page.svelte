@@ -52,25 +52,15 @@
 			<span class="label-text py-2">Room Number</span>
 			<input type="number" bind:value={roomNumber} class="input input-bordered max-w-sm" />
 		</div>
-		<div class="my-4 flex flex-row">
-			<input type="checkbox" bind:checked={daily} class="checkbox checkbox-primary mx-4" />
-			Daily
-			<input type="checkbox" bind:checked={weekly} class="checkbox checkbox-primary mx-4" />
-			Weekly
-			<input type="checkbox" bind:checked={nul} class="checkbox checkbox-primary mx-4" />
-			Nully
-			<input type="checkbox" bind:checked={va} class="checkbox checkbox-primary mx-4" />
-			VoidAura
-		</div>
-		<div class="overflow-x-auto">
-			<table class="table w-full table-auto">
+		<div class="overflow-x-auto mt-4">
+			<table class="table w-full table-fixed">
 				<!-- head -->
 				<thead>
 					<tr>
-						<th>Daily</th>
-						<th>Weekly</th>
-						<th>Nully</th>
-						<th>VoidAura</th>
+						<th><input type="checkbox" bind:checked={daily} class="checkbox checkbox-primary mx-4" /> Daily</th>
+						<th><input type="checkbox" bind:checked={weekly} class="checkbox checkbox-primary mx-4" />Weekly</th>
+						<th><input type="checkbox" bind:checked={nul} class="checkbox checkbox-primary mx-4" />Nully</th>
+						<th><input type="checkbox" bind:checked={va} class="checkbox checkbox-primary mx-4" />VoidAura</th>
 					</tr>
 				</thead>
 				<tbody>
