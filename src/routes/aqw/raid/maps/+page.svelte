@@ -79,7 +79,7 @@
 											copyValue = e.target.parentNode.lastChild.wholeText;
 											copyAction(e);
 										}}>{copyMessage}</button
-									>/join {map.daily}-{room}</td
+									> /join {map.daily}-{room}</td
 								>
 							{:else}
 								<td />
@@ -92,7 +92,7 @@
 											copyValue = e.target.parentNode.lastChild.wholeText;
 											copyAction(e);
 										}}>{copyMessage}</button
-									>/join {map.weekly}-{room}</td
+									> /join {map.weekly}-{room}</td
 								>
 							{:else}
 								<td />
@@ -105,7 +105,7 @@
 											copyValue = e.target.parentNode.lastChild.wholeText;
 											copyAction(e);
 										}}>{copyMessage}</button
-									>/join {map.nul}-{room}</td
+									> /join {map.nul}-{room}</td
 								>
 							{:else}
 								<td />
@@ -118,7 +118,7 @@
 											copyValue = e.target.parentNode.lastChild.wholeText;
 											copyAction(e);
 										}}>{copyMessage}</button
-									>/join {map.va}-{room}</td
+									> /join {map.va}-{room}</td
 								>
 							{:else}
 								<td />
