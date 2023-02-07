@@ -1,22 +1,16 @@
 <script>
+	import { copy } from 'svelte-copy';
+	import Copy from '$lib/images/copy.svelte';
+	import Alert from 'svelte-atoms/Alert.svelte';
+
 	let title = 'Raid Maps';
-	let copyMessage = 'Copy';
 	let copyValue = '';
 	let daily = true;
 	let nul = true;
 	let weekly = false;
 	let va = true;
 	let roomNumber = 1001;
-
-	function copyAction(e) {
-		let newVal = 'Copied';
-		e.target.textContent = newVal;
-		console.log(copyValue);
-		navigator.clipboard.writeText(copyValue);
-		setTimeout(() => {
-			e.target.textContent = 'Copy';
-		}, 2000);
-	}
+	let ClickedCopy = false;
 
 	let maps = [
 		{ daily: 'ultraezrajal', weekly: 'ultradage', nul: 'originul', va: 'shadowfall' },
@@ -39,6 +33,19 @@
 	<meta name="description" content={title} />
 </svelte:head>
 <div>
+	{#if ClickedCopy == true}
+		<Alert
+			status="positive"
+			icon="check"
+			closable
+			on:close={() => {
+				ClickedCopy = false;
+			}}
+		>
+			Copied!
+			<div slot="description">{copyValue}</div>
+		</Alert>
+	{/if}
 	<div class="justify-center px-4 border-t border-base-300">
 		<div class="text-3xl my-4">{title}</div>
 		<div class="form-control">
@@ -46,16 +53,14 @@
 			<input type="number" bind:value={roomNumber} class="input input-bordered max-w-sm" />
 		</div>
 		<div class="my-4 flex flex-row">
-			<label>
-				<input type="checkbox" bind:checked={daily} class="checkbox checkbox-primary mx-4" />
-				Daily
-				<input type="checkbox" bind:checked={weekly} class="checkbox checkbox-primary mx-4" />
-				Weekly
-				<input type="checkbox" bind:checked={nul} class="checkbox checkbox-primary mx-4" />
-				Nully
-				<input type="checkbox" bind:checked={va} class="checkbox checkbox-primary mx-4" />
-				VoidAura
-			</label>
+			<input type="checkbox" bind:checked={daily} class="checkbox checkbox-primary mx-4" />
+			Daily
+			<input type="checkbox" bind:checked={weekly} class="checkbox checkbox-primary mx-4" />
+			Weekly
+			<input type="checkbox" bind:checked={nul} class="checkbox checkbox-primary mx-4" />
+			Nully
+			<input type="checkbox" bind:checked={va} class="checkbox checkbox-primary mx-4" />
+			VoidAura
 		</div>
 		<div class="overflow-x-auto">
 			<table class="table w-full table-auto">
@@ -72,54 +77,70 @@
 					{#each maps as map}
 						<tr>
 							{#if map.daily && daily}
-								<td data-column-name="daily"
-									><button
-										class="btn btn-xs float-left"
-										on:click={(e) => {
-											copyValue = e.target.parentNode.lastChild.wholeText;
-											copyAction(e);
-										}}>{copyMessage}</button
-									> /join {map.daily}-{room}</td
-								>
+								<td data-column-name="daily">
+									<button
+										class="btn btn-ghost btn-xs float-left"
+										use:copy={`/join ${map.daily}-${room}`}
+										on:svelte-copy={(event) => {
+											ClickedCopy = true;
+											copyValue = event.detail;
+										}}
+									>
+										<Copy />
+									</button>
+									/join {map.daily}-{room}
+								</td>
 							{:else}
 								<td />
 							{/if}
 							{#if map.weekly && weekly}
-								<td data-column-name="weekly"
-									><button
-										class="btn btn-xs float-left"
-										on:click={(e) => {
-											copyValue = e.target.parentNode.lastChild.wholeText;
-											copyAction(e);
-										}}>{copyMessage}</button
-									> /join {map.weekly}-{room}</td
-								>
+								<td data-column-name="weekly">
+									<button
+										class="btn btn-ghost btn-xs float-left"
+										use:copy={`/join ${map.weekly}-${room}`}
+										on:svelte-copy={(event) => {
+											ClickedCopy = true;
+											copyValue = event.detail;
+										}}
+									>
+										<Copy />
+									</button>
+									/join {map.weekly}-{room}
+								</td>
 							{:else}
 								<td />
 							{/if}
 							{#if map.nul && nul}
-								<td data-column-name="nul"
-									><button
-										class="btn btn-xs float-left"
-										on:click={(e) => {
-											copyValue = e.target.parentNode.lastChild.wholeText;
-											copyAction(e);
-										}}>{copyMessage}</button
-									> /join {map.nul}-{room}</td
-								>
+								<td data-column-name="nul">
+									<button
+										class="btn btn-ghost btn-xs float-left"
+										use:copy={`/join ${map.nul}-${room}`}
+										on:svelte-copy={(event) => {
+											ClickedCopy = true;
+											copyValue = event.detail;
+										}}
+									>
+										<Copy />
+									</button>
+									/join {map.nul}-{room}
+								</td>
 							{:else}
 								<td />
 							{/if}
 							{#if map.va && va}
-								<td data-column-name="nul"
-									><button
-										class="btn btn-xs float-left"
-										on:click={(e) => {
-											copyValue = e.target.parentNode.lastChild.wholeText;
-											copyAction(e);
-										}}>{copyMessage}</button
-									> /join {map.va}-{room}</td
-								>
+								<td data-column-name="va">
+									<button
+										class="btn btn-ghost btn-xs float-left"
+										use:copy={`/join ${map.va}-${room}`}
+										on:svelte-copy={(event) => {
+											ClickedCopy = true;
+											copyValue = event.detail;
+										}}
+									>
+										<Copy />
+									</button>
+									/join {map.va}-{room}
+								</td>
 							{:else}
 								<td />
 							{/if}
