@@ -1,7 +1,13 @@
 <script>
-    import "../app.postcss";
+	import '../app.postcss';
+	import { onMount } from 'svelte';
+	import { themeChange } from 'theme-change';
 	import Header from './Header.svelte';
 	import Footer from './Footer.svelte';
+
+	onMount(() => {
+		themeChange(false);
+	});
 </script>
 
 <div class="app">
@@ -10,8 +16,7 @@
 	<main>
 		<slot />
 	</main>
-    <Footer />
-	
+	<Footer />
 </div>
 
 <style>
@@ -31,5 +36,4 @@
 		margin: 0 auto;
 		box-sizing: border-box;
 	}
-
 </style>

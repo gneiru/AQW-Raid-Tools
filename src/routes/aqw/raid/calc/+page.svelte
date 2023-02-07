@@ -96,7 +96,7 @@
 					sum *= 0;
 					ultraSum = [];
 				}}
-				class="btn btn-warning text-white"
+				class="btn btn-warning text-bg-primary-content"
 			>
 				Clear
 			</button>

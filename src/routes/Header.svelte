@@ -1,3 +1,7 @@
+<script>
+	import ThemeSelect from '$lib/theme-select.svelte';
+</script>
+
 <header class="bg-base-300">
 	<div class="corner" />
 
@@ -6,9 +10,7 @@
 			<a href="https://github.com/gneiru">
 				<img src="https://avatars.githubusercontent.com/u/105811202" alt="gneiru" />
 			</a>
-			<a href="/" class="normal-case text-xl font-mono p-2">
-				Neiru
-			</a>
+			<a href="/" class="normal-case text-xl font-mono p-2"> Neiru </a>
 		</div>
 		<div class="flex justify-end flex-1 px-2">
 			<div class="flex items-stretch">
@@ -22,8 +24,13 @@
 						<li><a href="/aqw/raid/calc">Raid Exp Calculator</a></li>
 						<li><a href="/aqw/raid/maps">Raid Maps</a></li>
 					</ul>
+					
 				</div>
+				
 			</div>
+		</div>
+		<div class="">
+			<ThemeSelect />
 		</div>
 	</div>
 </header>
