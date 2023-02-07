@@ -10,7 +10,7 @@
 			<a href="https://github.com/gneiru">
 				<img src="https://avatars.githubusercontent.com/u/105811202" alt="gneiru" />
 			</a>
-			<div class="normal-case text-xl font-mono p-2"> Neiru </div>
+			<div class="normal-case text-xl font-mono p-2"> Shido </div>
 		</div>
 		<div class="flex justify-end flex-1 px-2">
 			<div class="flex items-stretch">
