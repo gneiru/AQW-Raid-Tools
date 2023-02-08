@@ -51,7 +51,7 @@
 
 <svelte:head>
 	<title>{title}</title>
-	<meta name="description" content="Easily calculate helpers' bounty with this tool. Input discord ID, paste in discord then hit enter." />
+	<meta name="description" content="Easily calculate helpers' bounty with this tool. Input discord ID, Click copy button, paste in discord then hit enter." />
 </svelte:head>
 <div class="mockup-window border border-bg-base-300 min-w-fit">
 	<div class="justify-center px-4 border-t border-bg-base-300">
