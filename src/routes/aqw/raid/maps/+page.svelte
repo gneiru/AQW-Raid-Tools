@@ -4,6 +4,7 @@
 	import Alert from 'svelte-atoms/Alert.svelte';
 
 	let title = 'Raid Maps';
+	let content = 'Easily copy maps when raiding ultras and daily quests with guild members'
 	let copyValue = '';
 	let daily = true;
 	let nul = true;
@@ -30,7 +31,7 @@
 
 <svelte:head>
 	<title>{title}</title>
-	<meta name="description" content={title} />
+	<meta name="description" content={content} />
 </svelte:head>
 <div>
 	{#if ClickedCopy == true}
